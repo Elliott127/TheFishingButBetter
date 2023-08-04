@@ -24,12 +24,12 @@ namespace UnitTestProj
             var fishService = new FishService(mockedFileService);
 
             // Act
-            var listOfFish = fishService.ReadFishFromCsv();
+            List<Dictionary<string, string>> listOfFish = fishService.ReadFishFromCsv();
 
             // Assert
             _ = A.CallTo(() => mockedFileService.GetFile()).MustHaveHappenedOnceExactly();
             _ = A.CallTo(() => mockedFileService.ReadLinesFromFile(A<string>._)).MustHaveHappenedOnceExactly();
-            Assert.True(listOfFish.Any());
+            listOfFish.Should().NotBeEmpty();
 
         }
     }
