@@ -13,7 +13,7 @@ public class FishService : IFishService
 
         try
         {
-            var files = fileService.GetFile();
+            var files = fileService.GetFile("Fishing.csv");
 
             // Select the matching file
             string file = files[0];

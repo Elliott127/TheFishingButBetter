@@ -1,9 +1,9 @@
-﻿namespace TheGame
+﻿using Game.Services;
+namespace TheGame
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
@@ -11,6 +11,9 @@
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
+            IFileService fileService = new FileService();
+            IFishService fishService = new FishService(fileService);
+            var fish = fishService.ReadFishFromCsv();
             count++;
 
             if (count == 1)

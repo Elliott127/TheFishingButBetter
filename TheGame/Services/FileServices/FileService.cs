@@ -3,10 +3,8 @@ namespace Game.Services;
 
 public class FileService: IFileService
 {
-    public string[] GetFile()
+    public string[] GetFile(string fileName)
     {
-        string fileName = "Fishing.csv"; 
-
         // Change the file name and extension accordingly
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         DirectoryInfo solutionDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(baseDirectory).FullName).FullName).Parent.Parent.Parent;
