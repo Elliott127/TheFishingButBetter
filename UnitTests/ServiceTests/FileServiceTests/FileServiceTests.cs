@@ -53,6 +53,21 @@ public class FileServiceTests
         readLines.Should().NotBeEmpty();
         readLines.Should().BeEquivalentTo(randomLines);
     }
+
+    [Fact]
+    public void Should_Have_Successfully_Read_Fish_From_CSV()
+    {
+        // Arrange
+        A.CallTo(() => mockedFileService.ReadFromCsv(A<string>._)).Returns(new());
+        var fishService = new MockClass(mockedFileService);
+
+        // Act
+        List<Dictionary<string, string>> listOfFish = fishService.ReadFromCsv(string.Empty);
+
+        // Assert
+        _ = A.CallTo(() => mockedFileService.ReadFromCsv(A<string>._)).MustHaveHappenedOnceExactly();
+        listOfFish.Should().BeEmpty();
+    }
 }
 
 public class MockClass : IFileService
@@ -65,6 +80,11 @@ public class MockClass : IFileService
     public string[] GetFile(string fileName)
     {
         return fileService.GetFile(fileName);
+    }
+
+    public List<Dictionary<string, string>> ReadFromCsv(string fileName)
+    {
+        return fileService.ReadFromCsv(fileName);
     }
 
     public string[] ReadLinesFromFile(string file)

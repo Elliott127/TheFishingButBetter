@@ -4,7 +4,7 @@ namespace Game.Services;
 
 interface IPlayerService
 {
-    public List<string> GetPlayers();
+    public List<string> GetListOfPlayers();
     public Dictionary<dynamic, Player> GetPlayerInfo();
 
 }

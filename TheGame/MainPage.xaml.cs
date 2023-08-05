@@ -12,8 +12,7 @@ namespace TheGame
         private void OnCounterClicked(object sender, EventArgs e)
         {
             IFileService fileService = new FileService();
-            IFishService fishService = new FishService(fileService);
-            var fish = fishService.ReadFishFromCsv();
+            var fish = fileService.ReadFromCsv("Fishing.csv");
             count++;
 
             if (count == 1)

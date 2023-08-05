@@ -1,6 +1,6 @@
-﻿namespace UnitTests.ServiceTests.PlayerServiceTests
+﻿namespace UnitTests.Services;
+
+public class PlayerServiceTests
 {
-    public class PlayerServiceTests
-    {
-    }
+
 }

@@ -18,7 +18,7 @@ namespace TheGame
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
             builder.Services.AddTransient<IFileService, FileService>();
-            builder.Services.AddTransient<IFishService, FishService>();
+            builder.Services.AddTransient<IPlayerService, PlayerService>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

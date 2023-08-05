@@ -14,8 +14,9 @@ class PlayerService : IPlayerService
         throw new NotImplementedException();
     }
 
-    public List<string> GetPlayers()
+    public List<string> GetListOfPlayers()
     {
+
         throw new NotImplementedException();
     }
 }
