@@ -14,7 +14,7 @@ namespace TheGame
             IFileService fileService = new FileService();
             IPlayerService playerService = new PlayerService(fileService);
 
-            var playerInfo = playerService.GetListOfPlayers();
+            playerService.GetPlayerInfo("Elliott");
             count++;
 
             if (count == 1)

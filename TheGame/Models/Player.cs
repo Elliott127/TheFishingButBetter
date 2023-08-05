@@ -1,5 +1,4 @@
-﻿
-namespace Game.Models;
+﻿namespace Game.Models;
 
 class Player
 {

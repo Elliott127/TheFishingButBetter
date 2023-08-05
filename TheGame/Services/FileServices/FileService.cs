@@ -1,7 +1,27 @@
-﻿namespace Game.Services;
+﻿using Game.Models;
+
+namespace Game.Services;
 
 public class FileService: IFileService
 {
+    /// <inheritdoc/>
+    public string GetFile(string fileName)
+    {
+        // Change the file name and extension accordingly
+        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        DirectoryInfo solutionDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(baseDirectory).FullName).FullName).Parent.Parent.Parent;
+
+        string file = Directory.GetFiles(solutionDirectory.FullName, fileName, SearchOption.AllDirectories)[0];
+        return file;
+    }
+
+    /// <inheritdoc/>
+    public string[] ReadLinesFromFile(string file)
+    {
+        return File.ReadAllLines(file);
+    }
+
+    /// <inheritdoc/>
     public List<Dictionary<string, string>> ReadFromCsv(string fileName)
     {
         List<Dictionary<string, string>> csvData = new();
@@ -52,18 +72,18 @@ public class FileService: IFileService
 
         return csvData;
     }
-    public string GetFile(string fileName)
+
+    /// <inheritdoc/>
+    public void WriteToFile(string fileName, string contents)
     {
         // Change the file name and extension accordingly
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         DirectoryInfo solutionDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(baseDirectory).FullName).FullName).Parent.Parent.Parent;
 
-        string file = Directory.GetFiles(solutionDirectory.FullName, fileName, SearchOption.AllDirectories)[0];
-        return file;
+        string filepath = Directory.GetFiles(solutionDirectory.FullName, fileName, SearchOption.AllDirectories)[0];
+        StreamWriter writer = new(filepath, true);
+        writer.WriteLine(contents);
+        writer.Close();
     }
 
-    public string[] ReadLinesFromFile(string file)
-    {
-        return File.ReadAllLines(file);
-    }
 }
