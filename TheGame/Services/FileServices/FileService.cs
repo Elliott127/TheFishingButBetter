@@ -8,10 +8,7 @@ public class FileService: IFileService
 
         try
         {
-            var files = GetFile(fileName);
-
-            // Select the matching file
-            string file = files[0];
+            var file = GetFile(fileName);
 
             // Read all lines from the CSV file
             string[] lines = ReadLinesFromFile(file);
@@ -55,14 +52,14 @@ public class FileService: IFileService
 
         return csvData;
     }
-    public string[] GetFile(string fileName)
+    public string GetFile(string fileName)
     {
         // Change the file name and extension accordingly
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         DirectoryInfo solutionDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(baseDirectory).FullName).FullName).Parent.Parent.Parent;
 
-        string[] files = Directory.GetFiles(solutionDirectory.FullName, fileName, SearchOption.AllDirectories);
-        return files;
+        string file = Directory.GetFiles(solutionDirectory.FullName, fileName, SearchOption.AllDirectories)[0];
+        return file;
     }
 
     public string[] ReadLinesFromFile(string file)

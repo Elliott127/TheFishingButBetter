@@ -1,2 +1,4 @@
-Player name, password
-Elliott, Test
+id,Player name,password,score
+1,Elliott,Test,0
+2,Michael,Trainee,0
+3,Martini,Linguini,0
