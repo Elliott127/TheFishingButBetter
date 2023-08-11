@@ -16,8 +16,8 @@ namespace TheGame
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-            builder.Services.AddTransient<IFileService, FileService>();
-            builder.Services.AddTransient<IPlayerService, PlayerService>();
+            builder.Services.AddSingleton<IFileService, FileService>();
+            builder.Services.AddSingleton<IPlayerService, PlayerService>();
 
             builder.Services.AddTransient<LoginView>();
             builder.Services.AddTransient<LoginViewModel>();
