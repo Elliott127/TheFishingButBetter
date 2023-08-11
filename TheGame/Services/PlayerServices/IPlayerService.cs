@@ -39,4 +39,6 @@ public interface IPlayerService
     /// </summary>
     /// <returns>A list of caught fish.</returns>
     public List<string> GetCatches();
+
+    public Task<bool> CheckUserCredentials(string username, string password);
 }

@@ -1,7 +1,7 @@
-﻿using CommunityToolkit.Maui;
-using Game.Services;
+﻿using Game.Services;
 using Microsoft.Extensions.Logging;
-
+using TheGame.ViewModels;
+using TheGame.Views;
 namespace TheGame
 {
     public static class MauiProgram
@@ -11,7 +11,6 @@ namespace TheGame
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -19,6 +18,16 @@ namespace TheGame
                 });
             builder.Services.AddTransient<IFileService, FileService>();
             builder.Services.AddTransient<IPlayerService, PlayerService>();
+
+            builder.Services.AddTransient<LoginView>();
+            builder.Services.AddTransient<LoginViewModel>();
+
+            builder.Services.AddTransient<GameView>();
+            builder.Services.AddTransient<GameViewModel>();
+
+            builder.Services.AddTransient<SignupView>();
+            builder.Services.AddTransient<SignupViewModel>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

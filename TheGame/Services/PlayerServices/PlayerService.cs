@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using Windows.System;
 
 namespace Game.Services;
 
@@ -87,6 +88,20 @@ public class PlayerService : IPlayerService
         }
 
         return sb.ToString();
+    }
+
+    public async Task<bool> CheckUserCredentials(string username, string password)
+    {
+        List<Dictionary<string, string>> players = fileService.ReadFromCsv("");
+        foreach (var player in players)
+        {
+            if (username == player[0] && user.Password == GetMD5Hash(password))
+            {
+                id = user.UserId;
+                return true;
+            }
+        }
+        return false;
     }
 
 }
