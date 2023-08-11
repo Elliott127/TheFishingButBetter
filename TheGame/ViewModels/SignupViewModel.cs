@@ -6,23 +6,21 @@ namespace TheGame.ViewModels
 {
     public sealed partial class SignupViewModel : ObservableObject
     {
-        private readonly IFileService fileService;
-
+        private readonly IPlayerService playerService;
         [ObservableProperty]
         private string username = string.Empty;
 
         [ObservableProperty]
         private string password = string.Empty;
-        public SignupViewModel(IFileService fileService)
+        public SignupViewModel(IPlayerService playerService)
         {
-            this.fileService = fileService;
+            this.playerService = playerService;
         }
 
         [RelayCommand]
-        private async void CreateUser()
+        private async Task CreateUser()
         {
-
-            /*if (string.IsNullOrEmpty(Username))
+            if (string.IsNullOrEmpty(Username))
             {
                 await App.Current.MainPage.DisplayAlert("Invalid", "No username entered", "OK");
                 this.Username = string.Empty;
@@ -31,7 +29,7 @@ namespace TheGame.ViewModels
             }
             if (Password.Length >= 8)
             {
-                await userService.AddNewUser(Username, Password);
+                playerService.InsertNewPlayer(Username, Password);
                 this.Username = string.Empty;
                 this.Password = string.Empty;
                 await App.Current.MainPage.DisplayAlert("Successful", "User has been created!", "OK");
@@ -40,7 +38,7 @@ namespace TheGame.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Invalid", "Password length needs to be at least 8 characters long", "OK");
                 this.Password = string.Empty;
-            }*/
+            }
             this.Username = string.Empty;
             this.Password = string.Empty;
         }

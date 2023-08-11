@@ -1,6 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using Game.Models;
+using System.Security.Cryptography;
 using System.Text;
-using Windows.System;
 
 namespace Game.Services;
 
@@ -42,6 +42,7 @@ public class PlayerService : IPlayerService
     /// <inheritdoc/>
     public void InsertNewPlayer(string playerName, string password)
     {
+        playerName = playerName.Trim().ToLower();
         string id = GetListOfPlayers().Count == 1 ? "1" : (GetListOfPlayers().Count + 1).ToString();
         string hashedPassword = GetMD5Hash(password);
         string content = $"{id},{playerName},{hashedPassword},0";
@@ -90,18 +91,14 @@ public class PlayerService : IPlayerService
         return sb.ToString();
     }
 
-    public async Task<bool> CheckUserCredentials(string username, string password)
+    public bool CheckUserCredentials(string username, string password)
     {
-        List<Dictionary<string, string>> players = fileService.ReadFromCsv("");
-        foreach (var player in players)
-        {
-            if (username == player[0] && user.Password == GetMD5Hash(password))
-            {
-                id = user.UserId;
-                return true;
-            }
-        }
-        return false;
+        username = username.Trim().ToLower();
+        List<Dictionary<string, string>> players = fileService.ReadFromCsv("PlayerInfo.csv");
+        password = GetMD5Hash(password);
+        var player = players.Where(x => x.Any(player => player.Value.ToLower() == username)).FirstOrDefault();
+        var credentialsMatch = player.Any(player => player.Value == password);
+        return credentialsMatch;
     }
 
 }
