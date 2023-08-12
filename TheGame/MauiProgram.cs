@@ -28,6 +28,9 @@ namespace TheGame
             builder.Services.AddTransient<SignupView>();
             builder.Services.AddTransient<SignupViewModel>();
 
+            builder.Services.AddTransient<EndGameView>();
+            builder.Services.AddTransient<EndGameViewModel>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

@@ -69,6 +69,9 @@
 	  <MauiXaml Update="Resources\CustomStyles\LoginViewStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\EndGameView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\GameView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

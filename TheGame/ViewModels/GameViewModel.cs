@@ -27,11 +27,6 @@ public partial class GameViewModel : ViewModelBase
         playersScore = 0;
     }
 
-    public override async Task InitialiseAsync(object navigationData)
-    {
-
-    }
-
     [RelayCommand]
     public async Task OnCastLineClicked()
     {
@@ -54,6 +49,6 @@ public partial class GameViewModel : ViewModelBase
 [RelayCommand]
     public async Task EndGame()
     {
-        await Shell.Current.GoToAsync(nameof(LoginView), true);
+        await Shell.Current.GoToAsync(nameof(EndGameView), true);
     }
 }

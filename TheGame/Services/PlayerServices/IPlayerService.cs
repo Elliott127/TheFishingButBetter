@@ -41,4 +41,8 @@ public interface IPlayerService
     public List<string> GetCatches();
 
     public bool CheckUserCredentials(string username, string password);
+
+    public void SetActivePlayer(string username);
+
+    public string GetActivePlayer();
 }

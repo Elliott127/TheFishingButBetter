@@ -41,6 +41,7 @@ namespace TheGame.ViewModels
                 }
                 else if (playerService.CheckUserCredentials(Username, Password))
                 {
+                    playerService.SetActivePlayer(Username);
                     Username = string.Empty;
                     await Shell.Current.GoToAsync(nameof(GameView), true);
                 }
