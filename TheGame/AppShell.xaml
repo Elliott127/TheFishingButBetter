@@ -11,4 +11,7 @@
         ContentTemplate="{DataTemplate local:LoginView}"
         Route="LoginPage" />
 
+    <ShellContent
+        ContentTemplate="{DataTemplate local:GameView}"
+        Route="GamePage" />
 </Shell>

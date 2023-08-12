@@ -52,7 +52,8 @@ namespace TheGame.ViewModels
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.Message);
+                await App.Current.MainPage.DisplayAlert("Invalid credentials", "The credentials you entered didn't match", "OK");
+                Password = string.Empty;
             }
         }
 

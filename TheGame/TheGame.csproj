@@ -63,6 +63,9 @@
 	  <MauiXaml Update="Controls\CardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\CustomStyles\GameViewStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Resources\CustomStyles\LoginViewStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
