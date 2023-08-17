@@ -49,6 +49,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\fishing_background.png" />
+	  <None Remove="Resources\Images\gonefishing.png" />
+	  <None Remove="Resources\Images\security_background.png" />
+	  <None Remove="Resources\Images\space_background.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>

@@ -12,6 +12,7 @@ public class PlayerService : IPlayerService
     private readonly IFileService fileService;
     private readonly List<string> listOfCatches = new();
     private static string playerName = string.Empty;
+    private static int playerScore = 0;
     /// <summary>
     /// Initializes a new instance of the <see cref="PlayerService"/> class.
     /// </summary>
@@ -104,11 +105,21 @@ public class PlayerService : IPlayerService
     public void SetActivePlayer(string username)
     {
         char firstLetter = username[0];
-        playerName = firstLetter + username.Substring(1, username.Length);
+        playerName = firstLetter + username[1..];
     }
 
     public string GetActivePlayer()
     {
         return playerName;
+    }
+
+    public void SetPlayerScore(int score)
+    {
+        playerScore = score;
+    }
+
+    public int GetPlayerScore()
+    {
+        return playerScore;
     }
 }

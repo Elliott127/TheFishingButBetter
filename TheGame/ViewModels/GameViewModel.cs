@@ -34,16 +34,17 @@ public partial class GameViewModel : ViewModelBase
         int result = random.Next(1, 6);
         var fishCaughtStats = fishList[result];
         var fishCaughtName = fishCaughtStats["Name"];
-        ResultLabel = fishCaughtName;
-        bool answer = await App.Current.MainPage.DisplayAlert($"You Caught a {fishCaughtName}", "Would you like to keep it?", "Yes", "No");
-        string pointsToRetrieve = answer ? fishCaughtStats["Points if kept"] : fishCaughtStats["Points if released"];
-        if (fishCaughtStats["Fish Y/N"] == "Y")
+        ResultLabel = $"You Caught: {fishCaughtName}!";
+        bool keptFish = await App.Current.MainPage.DisplayAlert($"You Caught a {fishCaughtName}", "Would you like to keep it?", "Yes", "No");
+        string pointsToRetrieve = keptFish ? fishCaughtStats["Points if kept"] : fishCaughtStats["Points if released"];
+        if (fishCaughtStats["Fish Y/N"] == "Y" && keptFish)
         {
             playerService.AddCatch(fishCaughtName);
         }
 
         playersScore += Convert.ToInt32(pointsToRetrieve);
         Score = playersScore.ToString();
+        playerService.SetPlayerScore(playersScore);
     }
 
 [RelayCommand]

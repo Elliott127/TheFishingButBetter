@@ -45,4 +45,10 @@ public interface IPlayerService
     public void SetActivePlayer(string username);
 
     public string GetActivePlayer();
+
+    public void SetPlayerScore(int score);
+
+    public int GetPlayerScore();
+
+
 }

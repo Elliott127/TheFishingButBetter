@@ -7,12 +7,12 @@
     xmlns:viewModels="clr-namespace:TheGame.ViewModels"
     xmlns:control="clr-namespace:TheGame.Controls"
     x:Class="TheGame.Views.LoginView"
-    x:DataType="viewModels:LoginViewModel">
+    x:DataType="viewModels:LoginViewModel"
+    BackgroundImageSource="space_background.png">
     <ContentPage.Resources>
         <ResourceDictionary
             Source="../Resources/CustomStyles/LoginViewStyles.xaml" />
     </ContentPage.Resources>
-
     <VerticalStackLayout
         VerticalOptions="Center">
         <control:CardView

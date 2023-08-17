@@ -11,10 +11,6 @@ namespace TheGame
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
-            IFileService fileService = new FileService();
-            IPlayerService playerService = new PlayerService(fileService);
-
-            playerService.GetPlayerInfo("Elliott");
             count++;
 
             if (count == 1)
